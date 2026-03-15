@@ -171,3 +171,33 @@ body.light-theme .plus-menu button{
 background:#ddd;
 color:#111;
 }
+#menuToggle{
+font-size:22px;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+margin-right:10px;
+}
+
+body.light-theme #menuToggle{
+color:black;
+}
+
+@media (max-width:768px){
+
+.sidebar{
+position:absolute;
+left:-250px;
+transition:0.3s;
+}
+
+.sidebar.showSidebar{
+left:0;
+}
+
+.main{
+margin-left:0;
+}
+
+  }
