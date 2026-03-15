@@ -6,25 +6,44 @@
 <title>Zentrix AI</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="dark-theme">
-<div class="sidebar">
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
 <h2>Zentrix AI</h2>
+
 <input type="text" placeholder="Search..." id="search">
+
 <button onclick="newChat()">New Chat</button>
 <button onclick="switchTool('images')">Images</button>
 <button onclick="switchTool('apps')">Apps</button>
 <button onclick="switchTool('projects')">New Project</button>
 <button onclick="switchTool('history')">Chat History</button>
+
 <button id="themeToggle" onclick="toggleTheme()">Toggle Theme</button>
+
 </div>
 
+
+<!-- MAIN AREA -->
 <div class="main">
-<div class="chat-header"><button id="menuToggle">☰</button>
+
+<!-- CHAT HEADER -->
+<div class="chat-header">
+
+<button id="menuToggle">☰</button>
+
 <span>Current Chat</span>
+
 <div class="chat-options">
+
 <span class="pencil" onclick="renameChat()">✏️</span>
-<span class="dots" onclick="showChatMenu()">⋮</span>
-<div class="chat-menu" id="chatMenu">
+
+<span id="threeDotBtn" class="dots">⋮</span>
+
+<div class="chat-menu" id="threeDotMenu">
+
 <button onclick="alert('Add People')">Add people</button>
 <button onclick="alert('Share')">Share</button>
 <button onclick="alert('Rename')">Rename</button>
@@ -34,16 +53,26 @@
 <button onclick="alert('Add to Home')">Add to Home</button>
 <button onclick="alert('Delete')">Delete</button>
 <button onclick="alert('Report')">Report</button>
+
 </div>
 </div>
 </div>
 
+
+<!-- CHAT BOARD -->
 <div class="chat-board" id="chatBoard"></div>
 
+
+<!-- CHAT INPUT -->
 <div class="chat-input-area">
+
 <input type="text" id="userInput" placeholder="Type a message...">
-<button id="plusBtn" onclick="togglePlusMenu()">+</button>
+
+
+<button id="plusBtn">+</button>
+
 <div class="plus-menu" id="plusMenu">
+
 <button onclick="alert('Camera')">Camera</button>
 <button onclick="alert('Photo')">Photo</button>
 <button onclick="alert('Files')">Files</button>
@@ -55,11 +84,17 @@
 <button onclick="alert('Study and Learn')">Study and Learn</button>
 <button onclick="alert('Quizzes')">Quizzes</button>
 <button onclick="alert('Explore App')">Explore App</button>
-</div>
-<button onclick="sendMessage()">Send</button>
-</div>
+
 </div>
 
+<button onclick="sendMessage()">Send</button>
+
+</div>
+
+</div>
+
+
 <script src="script.js"></script>
+
 </body>
-  </html>
+</html>
