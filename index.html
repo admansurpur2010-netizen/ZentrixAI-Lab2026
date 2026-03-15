@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zentrix AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+<div class="sidebar">
+<h2>Zentrix AI</h2>
+<input type="text" placeholder="Search..." id="search">
+<button onclick="newChat()">New Chat</button>
+<button onclick="switchTool('images')">Images</button>
+<button onclick="switchTool('apps')">Apps</button>
+<button onclick="switchTool('projects')">New Project</button>
+<button onclick="switchTool('history')">Chat History</button>
+<button id="themeToggle" onclick="toggleTheme()">Toggle Theme</button>
+</div>
+
+<div class="main">
+<div class="chat-header">
+<span>Current Chat</span>
+<div class="chat-options">
+<span class="pencil" onclick="renameChat()">✏️</span>
+<span class="dots" onclick="showChatMenu()">⋮</span>
+<div class="chat-menu" id="chatMenu">
+<button onclick="alert('Add People')">Add people</button>
+<button onclick="alert('Share')">Share</button>
+<button onclick="alert('Rename')">Rename</button>
+<button onclick="alert('Add to Project')">Add to Project</button>
+<button onclick="alert('Archive')">Archive</button>
+<button onclick="alert('Pin Chat')">Pin Chat</button>
+<button onclick="alert('Add to Home')">Add to Home</button>
+<button onclick="alert('Delete')">Delete</button>
+<button onclick="alert('Report')">Report</button>
+</div>
+</div>
+</div>
+
+<div class="chat-board" id="chatBoard"></div>
+
+<div class="chat-input-area">
+<input type="text" id="userInput" placeholder="Type a message...">
+<button id="plusBtn" onclick="togglePlusMenu()">+</button>
+<div class="plus-menu" id="plusMenu">
+<button onclick="alert('Camera')">Camera</button>
+<button onclick="alert('Photo')">Photo</button>
+<button onclick="alert('Files')">Files</button>
+<button onclick="alert('Create Image')">Create Image</button>
+<button onclick="alert('Thinking')">Thinking</button>
+<button onclick="alert('Deep Researching')">Deep Researching</button>
+<button onclick="alert('Shopping Researching')">Shopping Researching</button>
+<button onclick="alert('Web Search')">Web Search</button>
+<button onclick="alert('Study and Learn')">Study and Learn</button>
+<button onclick="alert('Quizzes')">Quizzes</button>
+<button onclick="alert('Explore App')">Explore App</button>
+</div>
+<button onclick="sendMessage()">Send</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+  </html>
