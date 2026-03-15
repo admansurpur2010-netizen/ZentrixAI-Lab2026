@@ -1,0 +1,173 @@
+/* General Reset */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body.dark-theme{
+background:#343541;
+color:white;
+}
+
+body.light-theme{
+background:#f4f4f4;
+color:#111;
+}
+
+.sidebar{
+width:250px;
+background:#202123;
+padding:20px;
+display:flex;
+flex-direction:column;
+height:100vh;
+position:fixed;
+}
+
+.sidebar input{
+padding:8px;
+margin-bottom:10px;
+border:none;
+border-radius:5px;
+}
+
+.sidebar button{
+margin:5px 0;
+padding:10px;
+border:none;
+border-radius:5px;
+background:#444654;
+color:white;
+cursor:pointer;
+}
+
+body.light-theme .sidebar{
+background:#fff;
+}
+
+body.light-theme .sidebar button{
+background:#ddd;
+color:#111;
+}
+
+.main{
+margin-left:250px;
+flex:1;
+display:flex;
+flex-direction:column;
+height:100vh;
+}
+
+.chat-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 20px;
+background:#202123;
+position:relative;
+}
+
+body.light-theme .chat-header{
+background:#eee;
+color:#111;
+}
+
+.chat-options{
+position:relative;
+}
+
+.chat-menu{
+display:none;
+position:absolute;
+top:25px;
+right:0;
+background:#444654;
+flex-direction:column;
+border-radius:5px;
+overflow:hidden;
+}
+
+.chat-menu button{
+padding:8px 15px;
+border:none;
+background:#555;
+color:white;
+cursor:pointer;
+width:150px;
+text-align:left;
+}
+
+body.light-theme .chat-menu button{
+background:#ddd;
+color:#111;
+}
+
+.chat-board{
+flex:1;
+padding:20px;
+overflow-y:auto;
+}
+
+.chat-input-area{
+display:flex;
+align-items:center;
+padding:10px 20px;
+background:#202123;
+position:relative;
+}
+
+body.light-theme .chat-input-area{
+background:#eee;
+}
+
+.chat-input-area input{
+flex:1;
+padding:10px;
+border-radius:5px;
+border:none;
+margin-right:10px;
+}
+
+.chat-input-area button{
+padding:10px;
+margin-left:5px;
+border:none;
+border-radius:5px;
+background:#444654;
+color:white;
+cursor:pointer;
+}
+
+body.light-theme .chat-input-area button{
+background:#ddd;
+color:#111;
+}
+
+.plus-menu{
+display:none;
+position:absolute;
+bottom:50px;
+left:50px;
+background:#444654;
+flex-direction:column;
+border-radius:5px;
+overflow:hidden;
+}
+
+.plus-menu button{
+padding:8px 15px;
+border:none;
+background:#555;
+color:white;
+cursor:pointer;
+width:180px;
+text-align:left;
+margin:2px 0;
+}
+
+body.light-theme .plus-menu button{
+background:#ddd;
+color:#111;
+}
