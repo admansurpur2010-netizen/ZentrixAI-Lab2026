@@ -1,6 +1,6 @@
 // SIDEBAR TOGGLE
 const menuToggle = document.getElementById("menuToggle");
-const sidebar = document.querySelector(".sidebar");
+const sidebar = document.getElementById("sidebar");
 
 if(menuToggle){
 menuToggle.addEventListener("click", () => {
