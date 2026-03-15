@@ -1,49 +1,45 @@
-const chatBoard=document.getElementById('chatBoard');
-const userInput=document.getElementById('userInput');
-const plusMenu=document.getElementById('plusMenu');
-const chatMenu=document.getElementById('chatMenu');
+// SIDEBAR TOGGLE
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.querySelector(".sidebar");
 
-function sendMessage(){
-let msg=userInput.value.trim();
-if(msg==='') return;
-chatBoard.innerHTML+=`<div class="message user">You: ${msg}</div>`;
-chatBoard.innerHTML+=`<div class="message ai">AI: Thinking...</div>`;
-userInput.value='';
-chatBoard.scrollTop=chatBoard.scrollHeight;
+if(menuToggle){
+menuToggle.addEventListener("click", () => {
+sidebar.classList.toggle("showSidebar");
+});
 }
 
-function togglePlusMenu(){
-if(plusMenu.style.display==='flex'){
-plusMenu.style.display='none';
-}else{
-plusMenu.style.display='flex';
-plusMenu.style.flexDirection='column';
-}
+
+// THREE DOT MENU
+const threeDotBtn = document.getElementById("threeDotBtn");
+const threeDotMenu = document.getElementById("threeDotMenu");
+
+if(threeDotBtn){
+threeDotBtn.addEventListener("click", () => {
+threeDotMenu.classList.toggle("showMenu");
+});
 }
 
-function showChatMenu(){
-if(chatMenu.style.display==='flex'){
-chatMenu.style.display='none';
-}else{
-chatMenu.style.display='flex';
-chatMenu.style.flexDirection='column';
-}
+
+// PLUS TOOLS MENU
+const plusBtn = document.getElementById("plusBtn");
+const plusMenu = document.getElementById("plusMenu");
+
+if(plusBtn){
+plusBtn.addEventListener("click", () => {
+plusMenu.classList.toggle("showTools");
+});
 }
 
-function toggleTheme(){
-document.body.classList.toggle('dark-theme');
-document.body.classList.toggle('light-theme');
+
+// CLICK OUTSIDE CLOSE MENUS
+document.addEventListener("click",(e)=>{
+
+if(threeDotBtn && !threeDotBtn.contains(e.target) && !threeDotMenu.contains(e.target)){
+threeDotMenu.classList.remove("showMenu");
 }
 
-function newChat(){
-chatBoard.innerHTML='';
-alert('New Chat started!');
+if(plusBtn && !plusBtn.contains(e.target) && !plusMenu.contains(e.target)){
+plusMenu.classList.remove("showTools");
 }
 
-function switchTool(tool){
-alert(tool + ' clicked!');
-}
-
-function renameChat(){
-alert('Rename clicked!');
-  }
+});
