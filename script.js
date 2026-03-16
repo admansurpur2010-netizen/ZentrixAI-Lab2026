@@ -31,12 +31,12 @@ overlay.addEventListener("click", () => {
 });
 
 // ================= THREE DOT MENU =================
-const threeDotBtn = document.querySelector(".chat-header .dots");
-const chatMenu = document.getElementById("chatMenu");
+const threeDotBtn = document.getElementById("threeDotBtn");
+const chatMenu = document.getElementById("threeDotMenu");
 
 if(threeDotBtn){
     threeDotBtn.addEventListener("click",(e)=>{
-        e.stopPropagation();  // Important: click outside won't close immediately
+        e.stopPropagation(); // prevent closing immediately
         chatMenu.style.display = chatMenu.style.display === "flex" ? "none" : "flex";
     });
 }
@@ -126,4 +126,4 @@ async function sendMessage(){
     }
 
     chatBoard.scrollTop = chatBoard.scrollHeight;
-}
+            }
