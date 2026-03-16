@@ -6,7 +6,6 @@
 <title>Zentrix AI</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="dark-theme">
 
 <!-- SIDEBAR -->
@@ -22,28 +21,21 @@
 <button onclick="switchTool('history')">Chat History</button>
 
 <button id="themeToggle" onclick="toggleTheme()">Toggle Theme</button>
-
 </div>
-
 
 <!-- MAIN AREA -->
 <div class="main">
 
 <!-- CHAT HEADER -->
 <div class="chat-header">
-
 <button id="menuToggle">☰</button>
-
 <span>Current Chat</span>
 
 <div class="chat-options">
-
 <span class="pencil" onclick="renameChat()">✏️</span>
-
 <span id="threeDotBtn" class="dots">⋮</span>
 
 <div class="chat-menu" id="threeDotMenu">
-
 <button onclick="alert('Add People')">Add people</button>
 <button onclick="alert('Share')">Share</button>
 <button onclick="alert('Rename')">Rename</button>
@@ -53,26 +45,19 @@
 <button onclick="alert('Add to Home')">Add to Home</button>
 <button onclick="alert('Delete')">Delete</button>
 <button onclick="alert('Report')">Report</button>
-
 </div>
 </div>
 </div>
-
 
 <!-- CHAT BOARD -->
 <div class="chat-board" id="chatBoard"></div>
 
-
 <!-- CHAT INPUT -->
 <div class="chat-input-area">
-
 <input type="text" id="userInput" placeholder="Type a message...">
-
-
 <button id="plusBtn">+</button>
 
 <div class="plus-menu" id="plusMenu">
-
 <button onclick="alert('Camera')">Camera</button>
 <button onclick="alert('Photo')">Photo</button>
 <button onclick="alert('Files')">Files</button>
@@ -84,18 +69,15 @@
 <button onclick="alert('Study and Learn')">Study and Learn</button>
 <button onclick="alert('Quizzes')">Quizzes</button>
 <button onclick="alert('Explore App')">Explore App</button>
-
 </div>
 
 <button onclick="sendMessage()">Send</button>
-
 </div>
 
 </div>
 
+<div id="overlay"></div>
 
 <script src="script.js"></script>
-
 </body>
-</html>
-<div id="overlay"></div>
+  </html>
