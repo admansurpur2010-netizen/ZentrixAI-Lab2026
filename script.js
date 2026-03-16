@@ -31,28 +31,31 @@ overlay.addEventListener("click", () => {
 });
 
 // ================= THREE DOT MENU =================
-function showChatMenu(){
-    const menu = document.getElementById("chatMenu");
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+const threeDotBtn = document.querySelector(".dots");
+const chatMenu = document.getElementById("chatMenu");
+
+if(threeDotBtn){
+    threeDotBtn.addEventListener("click", (e)=>{
+        e.stopPropagation();
+        chatMenu.style.display = chatMenu.style.display === "flex" ? "none" : "flex";
+    });
 }
 
 // ================= PLUS MENU =================
-function togglePlusMenu(){
-    const menu = document.getElementById("plusMenu");
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+const plusBtn = document.getElementById("plusBtn");
+const plusMenu = document.getElementById("plusMenu");
+
+if(plusBtn){
+    plusBtn.addEventListener("click",(e)=>{
+        e.stopPropagation();
+        plusMenu.style.display = plusMenu.style.display === "flex" ? "none" : "flex";
+    });
 }
 
 // ================= CLOSE MENUS WHEN CLICK OUTSIDE =================
-document.addEventListener("click", (e)=>{
-    const chatMenu = document.getElementById("chatMenu");
-    const plusMenu = document.getElementById("plusMenu");
-
-    if(chatMenu && !e.target.closest(".dots")){
-        chatMenu.style.display = "none";
-    }
-    if(plusMenu && !e.target.closest("#plusBtn")){
-        plusMenu.style.display = "none";
-    }
+document.addEventListener("click", ()=>{
+    if(chatMenu) chatMenu.style.display = "none";
+    if(plusMenu) plusMenu.style.display = "none";
 });
 
 // ================= THEME TOGGLE =================
@@ -123,4 +126,4 @@ async function sendMessage(){
     }
 
     chatBoard.scrollTop = chatBoard.scrollHeight;
-}
+                         }
