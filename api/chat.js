@@ -9,7 +9,7 @@ return res.status(405).json({error:"Method not allowed"});
 try{
 
 const response = await fetch(
-"https://router.huggingface.co/hf-inference/models/gpt2",
+"https://router.huggingface.co/hf-inference/models/google/flan-t5-small",
 {
 method:"POST",
 headers:{
