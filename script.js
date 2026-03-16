@@ -114,11 +114,18 @@ async function sendMessage(){
 
         const data = await response.json();
 
-        if(data[0]?.generated_text){
-            aiMsg.textContent = "AI: " + data[0].generated_text;
-        } else {
-            aiMsg.textContent = "AI: Could not generate response";
-        }
+        if(Array.isArray(data) && data[0]?.generated_text){
+aiMsg.textContent = "AI: " + data[0].generated_text;
+}
+else if(data.generated_text){
+aiMsg.textContent = "AI: " + data.generated_text;
+}
+else if(data.error){
+aiMsg.textContent = "AI: " + data.error;
+}
+else{
+aiMsg.textContent = "AI: " + JSON.stringify(data);
+}
 
     }catch(err){
         aiMsg.textContent = "AI: Error connecting to server";
