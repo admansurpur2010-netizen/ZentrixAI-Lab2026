@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
 
-const HF_TOKEN = process.env.HF_TOKEN;
+const HF_TOKEN = process.env.HF_TOKEN;console.log("HF TOKEN:", HF_TOKEN);
 
 if(req.method !== "POST"){
 return res.status(405).json({error:"Method not allowed"});
