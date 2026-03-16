@@ -31,12 +31,12 @@ overlay.addEventListener("click", () => {
 });
 
 // ================= THREE DOT MENU =================
-const threeDotBtn = document.querySelector(".dots");
+const threeDotBtn = document.querySelector(".chat-header .dots");
 const chatMenu = document.getElementById("chatMenu");
 
 if(threeDotBtn){
-    threeDotBtn.addEventListener("click", (e)=>{
-        e.stopPropagation();
+    threeDotBtn.addEventListener("click",(e)=>{
+        e.stopPropagation();  // Important: click outside won't close immediately
         chatMenu.style.display = chatMenu.style.display === "flex" ? "none" : "flex";
     });
 }
@@ -52,7 +52,7 @@ if(plusBtn){
     });
 }
 
-// ================= CLOSE MENUS WHEN CLICK OUTSIDE =================
+// ================= CLICK OUTSIDE TO CLOSE MENUS =================
 document.addEventListener("click", ()=>{
     if(chatMenu) chatMenu.style.display = "none";
     if(plusMenu) plusMenu.style.display = "none";
@@ -82,7 +82,7 @@ function switchTool(tool){
     alert(tool + " section coming soon");
 }
 
-// ================= SAFE FREE AI CHAT =================
+// ================= SAFE AI CHAT =================
 async function sendMessage(){
     const input = document.getElementById("userInput");
     const chatBoard = document.getElementById("chatBoard");
@@ -126,4 +126,4 @@ async function sendMessage(){
     }
 
     chatBoard.scrollTop = chatBoard.scrollHeight;
-                         }
+}
