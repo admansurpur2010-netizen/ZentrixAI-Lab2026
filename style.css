@@ -230,3 +230,16 @@ margin-left:0;
 }
 
 }
+.sidebar{
+z-index:1000;
+}
+
+.chat-header{
+z-index:1100;
+position:relative;
+}
+
+#menuToggle{
+z-index:1200;
+position:relative;
+}
