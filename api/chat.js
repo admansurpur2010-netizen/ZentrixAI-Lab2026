@@ -14,7 +14,8 @@ const response = await fetch(
 method:"POST",
 headers:{
 "Authorization": `Bearer ${HF_TOKEN}`,
-"Content-Type":"application/json"
+"Content-Type":"application/json",
+"Accept": "application/json"
 },
 body: JSON.stringify({
 inputs: req.body.userText
