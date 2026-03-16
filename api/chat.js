@@ -9,15 +9,15 @@ return res.status(405).json({error:"Method not allowed"});
 try{
 
 const response = await fetch(
-"https://api-inference.huggingface.co/models/gpt2",
+"https://router.huggingface.co/hf-inference/models/gpt2",
 {
 method:"POST",
 headers:{
-"Authorization":`Bearer ${HF_TOKEN}`,
+"Authorization": `Bearer ${HF_TOKEN}`,
 "Content-Type":"application/json"
 },
-body:JSON.stringify({
-inputs:req.body.userText
+body: JSON.stringify({
+inputs: req.body.userText
 })
 }
 );
@@ -30,4 +30,4 @@ res.status(200).json(data);
 res.status(500).json({error:"AI request failed"});
 }
 
-  }
+}
