@@ -1,144 +1,126 @@
-// SIDEBAR + OVERLAY
+// ================= SIDEBAR + OVERLAY =================
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
+let overlay = document.getElementById("overlay");
+
+// Create overlay if it doesn't exist
+if(!overlay){
+    overlay = document.createElement("div");
+    overlay.id = "overlay";
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.width = "100%";
+    overlay.style.height = "100%";
+    overlay.style.background = "rgba(0,0,0,0.4)";
+    overlay.style.display = "none";
+    overlay.style.zIndex = "1050";
+    document.body.appendChild(overlay);
+}
 
 if(menuToggle){
-menuToggle.addEventListener("click", () => {
-
-sidebar.classList.toggle("showSidebar");
-overlay.classList.toggle("showOverlay");
-
-});
+    menuToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("showSidebar");
+        overlay.style.display = sidebar.classList.contains("showSidebar") ? "block" : "none";
+    });
 }
 
-if(overlay){
 overlay.addEventListener("click", () => {
-
-sidebar.classList.remove("showSidebar");
-overlay.classList.remove("showOverlay");
-
+    sidebar.classList.remove("showSidebar");
+    overlay.style.display = "none";
 });
-}
 
-
-// THREE DOT MENU
+// ================= THREE DOT MENU =================
 function showChatMenu(){
-
-const menu = document.getElementById("chatMenu");
-
-if(menu.style.display === "flex"){
-menu.style.display = "none";
-}else{
-menu.style.display = "flex";
+    const menu = document.getElementById("chatMenu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
 
-}
-
-
-// PLUS MENU
+// ================= PLUS MENU =================
 function togglePlusMenu(){
-
-const menu = document.getElementById("plusMenu");
-
-if(menu.style.display === "flex"){
-menu.style.display = "none";
-}else{
-menu.style.display = "flex";
+    const menu = document.getElementById("plusMenu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
 
-}
+// ================= CLOSE MENUS WHEN CLICK OUTSIDE =================
+document.addEventListener("click", (e)=>{
+    const chatMenu = document.getElementById("chatMenu");
+    const plusMenu = document.getElementById("plusMenu");
 
-
-// CLOSE MENUS WHEN CLICK OUTSIDE
-document.addEventListener("click",(e)=>{
-
-const chatMenu = document.getElementById("chatMenu");
-const plusMenu = document.getElementById("plusMenu");
-
-if(chatMenu && !e.target.closest(".dots")){
-chatMenu.style.display = "none";
-}
-
-if(plusMenu && !e.target.closest("#plusBtn")){
-plusMenu.style.display = "none";
-}
-
+    if(chatMenu && !e.target.closest(".dots")){
+        chatMenu.style.display = "none";
+    }
+    if(plusMenu && !e.target.closest("#plusBtn")){
+        plusMenu.style.display = "none";
+    }
 });
 
-
-// THEME TOGGLE
+// ================= THEME TOGGLE =================
 function toggleTheme(){
-
-const body = document.body;
-
-if(body.classList.contains("dark-theme")){
-body.classList.remove("dark-theme");
-body.classList.add("light-theme");
-}else{
-body.classList.remove("light-theme");
-body.classList.add("dark-theme");
+    const body = document.body;
+    body.classList.toggle("dark-theme");
+    body.classList.toggle("light-theme");
 }
 
-}
-
-
-// NEW CHAT
+// ================= NEW CHAT =================
 function newChat(){
-
-const chatBoard = document.getElementById("chatBoard");
-chatBoard.innerHTML = "";
-
+    const chatBoard = document.getElementById("chatBoard");
+    chatBoard.innerHTML = "";
 }
 
-
-// SEND MESSAGE
-function sendMessage(){
-
-const input = document.getElementById("userInput");
-const chatBoard = document.getElementById("chatBoard");
-
-if(input.value.trim() === "") return;
-
-const userMsg = document.createElement("div");
-userMsg.textContent = "You: " + input.value;
-
-userMsg.style.margin = "10px 0";
-
-chatBoard.appendChild(userMsg);
-
-
-// Fake AI reply
-const aiMsg = document.createElement("div");
-aiMsg.textContent = "AI: I'm Zentrix AI. Soon I will answer like ChatGPT.";
-
-aiMsg.style.margin = "10px 0";
-aiMsg.style.opacity = "0.8";
-
-chatBoard.appendChild(aiMsg);
-
-input.value = "";
-
-chatBoard.scrollTop = chatBoard.scrollHeight;
-
-}
-
-
-// RENAME CHAT
+// ================= RENAME CHAT =================
 function renameChat(){
-
-const name = prompt("Enter new chat name");
-
-if(name){
-document.querySelector(".chat-header span").innerText = name;
+    const name = prompt("Enter new chat name");
+    if(name) document.querySelector(".chat-header span").innerText = name;
 }
 
-}
-
-
-// SWITCH TOOL
+// ================= SWITCH TOOL =================
 function switchTool(tool){
+    alert(tool + " section coming soon");
+}
 
-alert(tool + " section coming soon");
+// ================= SAFE FREE AI CHAT =================
+async function sendMessage(){
+    const input = document.getElementById("userInput");
+    const chatBoard = document.getElementById("chatBoard");
+    const userText = input.value.trim();
+    if(userText === "") return;
 
-                   }
+    // User message
+    const userMsg = document.createElement("div");
+    userMsg.textContent = "You: " + userText;
+    userMsg.style.margin = "10px 0";
+    chatBoard.appendChild(userMsg);
+
+    input.value = "";
+
+    // AI message placeholder
+    const aiMsg = document.createElement("div");
+    aiMsg.textContent = "AI is thinking...";
+    aiMsg.style.margin = "10px 0";
+    aiMsg.style.opacity = "0.8";
+    chatBoard.appendChild(aiMsg);
+
+    // ================ CALL SERVERLESS FUNCTION ================
+    try{
+        const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userText })
+        });
+
+        const data = await response.json();
+
+        if(data[0]?.generated_text){
+            aiMsg.textContent = "AI: " + data[0].generated_text;
+        } else {
+            aiMsg.textContent = "AI: Could not generate response";
+        }
+
+    }catch(err){
+        aiMsg.textContent = "AI: Error connecting to server";
+        console.error(err);
+    }
+
+    chatBoard.scrollTop = chatBoard.scrollHeight;
+}
