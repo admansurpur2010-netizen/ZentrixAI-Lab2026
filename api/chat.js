@@ -8,7 +8,9 @@ try {
 
 const userText = req.body.userText;
 
-const response = await fetch(`https://api.affiliateplus.xyz/api/chatbot?message=${encodeURIComponent(userText)}&botname=Zentrix&ownername=Dhananjay`);
+const response = await fetch(
+`https://api.affiliateplus.xyz/api/chatbot?message=${encodeURIComponent(userText)}&botname=ZentrixAI&ownername=Dhananjay`
+);
 
 const data = await response.json();
 
