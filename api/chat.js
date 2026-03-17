@@ -6,20 +6,31 @@ return res.status(405).json({ error: "Method not allowed" });
 
 try {
 
-const userText = req.body.userText;
+const text = req.body.userText.toLowerCase();
 
-const response = await fetch(
-`https://api.affiliateplus.xyz/api/chatbot?message=${encodeURIComponent(userText)}&botname=ZentrixAI&ownername=Dhananjay`
-);
+let reply = "";
 
-const data = await response.json();
+if(text.includes("hello")){
+reply = "Hello! I am Zentrix AI 🤖";
+}
+else if(text.includes("how are you")){
+reply = "I am doing great! Tell me how can I help you.";
+}
+else if(text.includes("your name")){
+reply = "My name is Zentrix AI.";
+}
+else if(text.includes("bye")){
+reply = "Goodbye! Have a nice day 👋";
+}
+else{
+reply = "You said: " + text;
+}
 
 res.status(200).json({
-generated_text: data.message
+generated_text: reply
 });
 
 } catch (err) {
-console.error(err);
 res.status(500).json({ error: "AI request failed" });
 }
 
