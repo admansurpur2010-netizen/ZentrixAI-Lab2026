@@ -6,17 +6,9 @@ return res.status(405).json({ error: "Method not allowed" });
 
 try {
 
-const response = await fetch("https://api.affiliateplus.xyz/api/chatbot", {
-method: "POST",
-headers: {
-"Content-Type": "application/json"
-},
-body: JSON.stringify({
-message: req.body.userText,
-botname: "Zentrix AI",
-ownername: "Dhananjay"
-})
-});
+const userText = req.body.userText;
+
+const response = await fetch(`https://api.affiliateplus.xyz/api/chatbot?message=${encodeURIComponent(userText)}&botname=Zentrix&ownername=Dhananjay`);
 
 const data = await response.json();
 
@@ -25,6 +17,7 @@ generated_text: data.message
 });
 
 } catch (err) {
+console.error(err);
 res.status(500).json({ error: "AI request failed" });
 }
 
