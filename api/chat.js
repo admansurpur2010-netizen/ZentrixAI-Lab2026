@@ -9,17 +9,18 @@ return res.status(405).json({ error: "Method not allowed" });
 try {
 
 const response = await fetch(
-"https://router.huggingface.co/hf-inference/models/google/flan-t5-small",
+"https://router.huggingface.co/hf-inference/models/mistralai/Mistral-7B-Instruct-v0.2",
 {
 method: "POST",
 headers: {
-"Authorization": `Bearer ${HF_TOKEN}`,
+Authorization: `Bearer ${HF_TOKEN}`,
 "Content-Type": "application/json"
 },
 body: JSON.stringify({
 inputs: req.body.userText,
 parameters: {
-max_new_tokens: 100
+max_new_tokens: 200,
+temperature: 0.7
 }
 })
 }
